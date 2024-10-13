@@ -1,0 +1,32 @@
+{
+    "universo": {
+      "galaxias": [
+        {
+          "nombre": "Vía Láctea",
+          "planetas": [
+            {
+              "nombre": "Tierra",
+              "tipo": "rocoso",
+              "vida": true
+            },
+            {
+              "nombre": "Marte",
+              "tipo": "rocoso",
+              "vida": false
+            }
+          ]
+        },
+        {
+          "nombre": "Andrómeda",
+          "planetas": [
+            {
+              "nombre": "Planeta X",
+              "tipo": "rocoso",
+              "vida": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+  
