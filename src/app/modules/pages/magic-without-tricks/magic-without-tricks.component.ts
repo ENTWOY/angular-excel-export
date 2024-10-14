@@ -1,9 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { GeneralService } from '../../../services/general.service';
 import { CommonModule, DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs';
 import { ExcelGlobalService } from '../../utils/excel-global.service';
 
 @Component({
@@ -15,27 +12,8 @@ import { ExcelGlobalService } from '../../utils/excel-global.service';
   providers: [ExcelGlobalService, DatePipe]
 })
 export class MagicWithoutTricksComponent implements OnInit {
-
-  private dataSubject = new BehaviorSubject<any[]>([
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john.doe@example.com"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com"
-    },
-    {
-      "id": 3,
-      "name": "Alice Johnson",
-      "email": "alice.johnson@example.com"
-    }
-  ]);
-  
-  data$ = this.dataSubject.asObservable();
   data: any[] = [];
+  date = new Date;
 
   constructor(
     private _generalService: GeneralService,
@@ -79,11 +57,7 @@ export class MagicWithoutTricksComponent implements OnInit {
     }
   }
 
-  getJson() {
-    // Suscribirse a los datos
-    this.data$.subscribe((data) => {
-      this.data = data;
-      console.log(this.data);
-    });
+  exportToExcel2() {
+
   }
 }
