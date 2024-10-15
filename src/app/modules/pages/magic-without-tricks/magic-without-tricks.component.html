@@ -7,7 +7,6 @@
             Exportar a Excel V1
       </button>
       <button
-            disabled
             (click)="exportToExcel2()"
             class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
             Exportar a Excel V2
@@ -20,7 +19,7 @@
               <th class="py-3 px-4 text-left">Name</th>
               <th class="py-3 px-4 text-left">Status</th>
               <th class="py-3 px-4 text-left">Species</th>
-              <th class="py-3 px-4 text-left">Date</th>
+              <th class="py-3 px-4 text-left">Created</th>
           </tr>
       </thead>
       <tbody>
@@ -29,7 +28,7 @@
               <td class="px-4 border-b border-gray-200">{{ item.name }}</td>
               <td class="px-4 border-b border-gray-200">{{ item.status }}</td>
               <td class="px-4 border-b border-gray-200">{{ item.species }}</td>
-              <td class="px-4 border-b border-gray-200">{{ date | date: 'dd MM yyyy' }}</td>
+              <td class="px-4 border-b border-gray-200">{{ item.created | date: 'dd MM yyyy' }}</td>
           </tr>
       </tbody>
   </table>

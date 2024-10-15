@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { GeneralService } from '../../../services/general.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ExcelGlobalService } from '../../utils/excel-global.service';
+import { SweetAlertService } from '../../utils/sweet-alert.service';
 
 @Component({
   selector: 'app-magic-without-tricks',
@@ -17,7 +18,8 @@ export class MagicWithoutTricksComponent implements OnInit {
 
   constructor(
     private _generalService: GeneralService,
-    private _excelService: ExcelGlobalService
+    private _excelService: ExcelGlobalService,
+    private _sweetService: SweetAlertService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class MagicWithoutTricksComponent implements OnInit {
     const confirmExport = confirm("¿Desea exportar los datos a un archivo Excel?");
 
     if (!this.data || this.data.length === 0) {
-      console.log("No hay datos disponibles para exportar a Excel.");
+      this._sweetService.alertToast("No hay datos disponibles para exportar a Excel", "info", 3000)
       return
     }
 
@@ -53,11 +55,38 @@ export class MagicWithoutTricksComponent implements OnInit {
       }
       this._excelService.createExcel(info_excel)
     } else {
-      console.log("Exportación cancelada.");
+      this._sweetService.alertToast("Exportación cancelada.", "info", 3000)
     }
   }
 
   exportToExcel2() {
+    const confirmExport = confirm("¿Desea exportar los datos a un archivo Excel?");
 
+    if (!this.data || this.data.length === 0) {
+      this._sweetService.alertToast("No hay datos disponibles para exportar a Excel", "info", 3000)
+      return
+    }
+
+    if (confirmExport) {
+      let arreglo = this.data
+      let mapa : Map<any,any> = new Map( [      
+        ['ID','id'],
+        ['NAME','name'],
+        ['STATUS','status'],
+        ['SPECIES','species'],
+        ['CREATED','created']
+      ])
+
+      let info_excel  = {
+        mapa : mapa,
+        title : 'Reporte de API V2',
+        data: arreglo, 
+        widths : [10,24,10,10,10],
+        fecha: new Date
+      }
+      this._excelService.createExcel2(info_excel)
+    } else {
+      this._sweetService.alertToast("Exportación cancelada.", "info", 3000)
+    }
   }
 }
