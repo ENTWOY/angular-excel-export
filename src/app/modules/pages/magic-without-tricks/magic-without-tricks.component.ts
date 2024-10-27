@@ -9,10 +9,9 @@ import { SweetAlertService } from '../../utils/sweet-alert.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './magic-without-tricks.component.html',
-  styleUrl: './magic-without-tricks.component.scss',
   providers: [ExcelGlobalService, DatePipe]
 })
-export default class MagicWithoutTricksComponent implements OnInit {
+export class MagicWithoutTricksComponent {
   data: any[] = [];
   date = new Date;
 
