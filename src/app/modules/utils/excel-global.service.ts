@@ -166,6 +166,7 @@ export class ExcelGlobalService {
       this.putBorder(insertRow)
     })
 
+    /* change temp */
     worksheet.getColumn(1).width = 10;
     worksheet.getColumn(2).width = 30;
     worksheet.getColumn(3).width = 30;
