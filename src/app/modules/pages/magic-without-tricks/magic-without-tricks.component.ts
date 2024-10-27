@@ -12,7 +12,7 @@ import { SweetAlertService } from '../../utils/sweet-alert.service';
   styleUrl: './magic-without-tricks.component.scss',
   providers: [ExcelGlobalService, DatePipe]
 })
-export class MagicWithoutTricksComponent implements OnInit {
+export default class MagicWithoutTricksComponent implements OnInit {
   data: any[] = [];
   date = new Date;
 
